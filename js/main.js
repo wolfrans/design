@@ -141,5 +141,35 @@ document.querySelectorAll('.toggle-card').forEach(button => {
     button.textContent = card.classList.contains('active') ? 'Show Less' : 'Learn More';
   });
 });
+// ... other JS (like navbar toggle, contact etc.)
+
+// New fail-safe carousel
+window.addEventListener("load", () => {
+  const slides = document.querySelector(".slides");
+  const slide = document.querySelectorAll(".slide");
+  const prev = document.querySelector(".prev");
+  const next = document.querySelector(".next");
+  let index = 0;
+
+  function showSlide(i) {
+    slides.style.transform = `translateX(-${i * 100}%)`;
+  }
+
+  next.addEventListener("click", () => {
+    index = (index + 1) % slide.length;
+    showSlide(index);
+  });
+
+  prev.addEventListener("click", () => {
+    index = (index - 1 + slide.length) % slide.length;
+    showSlide(index);
+  });
+
+  // Auto-slide every 5s
+  setInterval(() => {
+    index = (index + 1) % slide.length;
+    showSlide(index);
+  }, 5000);
+});
 
 //academic readmore modal toggle end//
