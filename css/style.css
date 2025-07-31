@@ -57,15 +57,14 @@ nav {
 .slides {
   display: flex;
   width: 100%;
-  height: 100%;
   transition: transform 0.5s ease;
 }
-
 .slides img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   flex-shrink: 0;
+  object-fit: cover;
+  display: block;
 }
 
 .prev,.next {
@@ -582,4 +581,10 @@ footer {
 
 .whatsapp-float i {
   display: block;
+}
+@media (max-width: 768px) {
+  .slides img {
+    height: 300px;     /* fixed height for smoother look */
+    object-fit: cover; /* crops nicely */
+  }
 }
